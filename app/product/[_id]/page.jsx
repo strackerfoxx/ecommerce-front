@@ -4,9 +4,6 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation";
 
-import ReactImageMagnify from 'react-image-magnify';
-import { toast, ToastContainer } from 'react-toastify';
-
 import { useCart } from "@/app/hooks/useCart";
 import { useProduct } from "@/app/hooks/useProduct";
 import { useUser } from "@/app/hooks/useUser";
@@ -70,18 +67,7 @@ export default function Product({ params }) {
             <div className="main-container">
                 <div className="detail">
                     <div className="detail-img">
-                        <ReactImageMagnify {...{
-                            smallImage: {
-                                alt: 'Wristwatch by Ted Baker London',
-                                isFluidWidth: true,
-                                src: mainImage
-                            },
-                            largeImage: {
-                                src: mainImage,
-                                width: 1300,
-                                height: 1300
-                            }
-                        }} />
+                        <Image src={mainImage} width={200} height={200} />
                         <div className="other-images">
                             {product?.images?.map((img) =>
                                 <Image key={img} src={img} width={75} height={75} onMouseEnter={() => setMainImage(img)} alt={product?.name} />
